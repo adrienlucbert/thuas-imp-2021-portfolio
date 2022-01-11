@@ -183,18 +183,125 @@ multivariate time series with missing values.
 
 ### Configuring a model
 
-?
+When trying out Recurrent Neural Networks, I started with trying to reproduce
+the example from Jeroen's lectures. I recreated it, and played a bit with it,
+trying to get a good grasp of how RNNs work, and how each hyper-parameter
+influences the model's performance.
+Aside from the lecture, I read about different architectures that could be used
+for imputing missing data for building energy data, mainly from two papers
+([[1]](https://booksc.eu/book/81720800/7b299c) and [[2]](https://www.nature.com/articles/s41598-018-24271-9)).
+These papers discussed two promising architectures: a variation of GRU, and
+bi-directional LSTM. I tested these two configurations and eventually observed
+slight performance improvements on the lecture example dataset.
+
+After these experimentations, Jesús and I moved on to adapting RNN to Factory
+Zero's house data. From my experimentations, we chose to use one-directional GRU
+architecture.
 
 ### Training a model
 
-Prevent {over,under}fitting:
-- early stopping
-- feature selection
-- HP optimization
+When training our first models, we faced overfitting after some epochs.
+
+<figure style="max-width:600px;text-align:center;margin:.8em auto">
+  <img src="assets/RNN/validation-curve-poor-features.png" alt="Validation curve with poor features"/>
+  <figcaption><i>Validation curve that shows overfitting</i></figcaption>
+</figure>
+
+> Note that at epoch 120, we reset the model to the state where it's validation
+loss is the lowest, before continuing the training a bit further with a smaller
+learning rate. This explains the strange shape at the end of this curve. We did
+the same in some trainings later.
+
+We then realized that this could be avoided by selecting correlated features to
+help predicting the target. Indeed, so far we tried to predict the heat pump's
+flow temperature using only the flow temperature and timestamp as features.  
+
+[I plotted a heatmap](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/pipeline/corr.ipynb)
+showing the correlation between each field of Factory Zero data to help us
+choose the most correlated columns.
+
+<figure style="max-width:600px;text-align:center;margin:.8em auto">
+  <img src="assets/RNN/correlation-matrix.png" alt="Correlation matrix of Factory Zero sensors data"/>
+  <figcaption><i>Correlation matrix of the Factory Zero sensors data</i></figcaption>
+</figure>
+
+After adding the two most correlated columns (`alklimaHeatPump return_temp` and
+`energyHeatpump power`), we obtained much better results.
+
+<figure style="max-width:600px;text-align:center;margin:.8em auto">
+  <img src="assets/RNN/validation-curve-better-features.png" alt="Validation curve with better features"/>
+  <figcaption><i>Validation curve that no longer overfits, thanks to better feature selection</i></figcaption>
+</figure>
+
+these results were satisfactory, but we wanted to improve them further, by
+tuning the model's hyper-parameters. To do that, I used a technique I learnt
+during an internship last summer: hyper-parameters optimization using a genetic
+algorithm.  
+I used a genetic algorithm very much similar to [this one](https://github.com/thuas-imp-2021/Learning-Lab/blob/main/genetic-algorithm.ipynb),
+which generated random set of hyper-parameters and evaluated them using
+[this script](sources/GA/rnn-fzero.py). The evaluation fitness was the max
+`r2_score` obtained while training with the given hyper-parameters. This way,
+I run the genetic algorithm for 40 generations and 21500 indivuals, to improve
+our `r2_score` from 0.85 to 0.963 with the following parameters:
+
+| Parameter     | Description                                                               | Bounds     | Optimized value |
+| ------------- | ------------------------------------------------------------------------- | ---------- | --------------- |
+| `window_size` | size of the input window to feed to the RNN                               | 2-12       | 12              |
+| `batch_size`  | number of training samples provided to the trainer in one training pass   | 5-32       | 5               |
+| `num_layers`  | number of hidden layers                                                   | 1-5        | 1               |
+| `hidden_size` | size of the hidden layers                                                 | 2-100      | 95              |
+| `loss`        | loss function to use for the training                                     | MSE, Huber | MSE             |
+| `rnn`         | RNN architecture to use                                                   | GRU, LSTM  | GRU             |
 
 ### Evaluating a model
 
+For the final paper, we wanted imputation results for different targets. For
+that reason, I trained models for each target. Each model uses different features,
+according to the correlation matrix. Also, I wanted to evaluate the impact that
+adding timestamp or timedelta (difference between each observation timestamp and
+the previous observation timestamp) to the features had on the model's performance.
+
+To do this, I trained models on each target using [this script](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/main/rnn-trainer.ipynb),
+adding the timetamp alone, the timedelta alone, both, or none. The results are
+presented in the table below. As a matter of fact, using none resulted in an
+overall slight improvement.
+
+| Source      | Target                        | r2_score       | r2_score       | r2_score                    | r2_score  |
+| ----------- | ----------------------------- | -------------- | -------------- | --------------------------- | --------- |
+|             |                               | with timestamp | with timedelta | wih timestamp and timedelta | with none |
+| KNMI        | Temperature                   | 0.96648        | 0.96844        | 0.9674                      | 0.9689    |
+| KNMI        | Relative atmospheric humidity | 0.83019        | 0.86689        | 0.86335                     | 0.86642   |
+| KNMI        | Global Radiation              | 0.74355        | 0.90357        | 0.87708                     | 0.90472   |
+| FactoryZero | alklimaHeatPump flow_temp     | 0.94248        | 0.40943        | 0.39286                     | 0.94214   |
+| FactoryZero | alklimaHeatPump op_mode       | 0.90225        | -0.10337       | -0.06115                    | 0.90194   |
+| FactoryZero | smartMeter power              | 0.82267        | 0.42267        | 0.34906                     | 0.83316   |
+| FactoryZero | co2sensor co2                 | 0.97538        | -2.27796       | -2.32368                    | 0.97715   |
+
 ### Visualizing the outcome of a model
+
+Once the models were trained on training data, it was necessary to verify their
+ability to impute multi-step gaps. To do this, I ran the model through our
+pipeline, to load the data, create gaps of different sizes, impute them and then
+evaluate the results.  
+After that, I used scripts written by Albert and Juliën to compare RNN results
+to other methods, plotting a specific gap, or calculating the variance error of
+imputations using different methods.
+
+<figure style="text-align:center;margin:.8em auto">
+  <img src="assets/pipeline/results/method-comparison-temperature-gap-3.png" alt="Method comparison on one gap of the KNMI Temperature target"/>
+  <figcaption><i>Method comparison on one gap of the KNMI Temperature target</i></figcaption>
+</figure>
+
+<figure style="max-width:600px;text-align:center;margin:.8em auto">
+  <img src="assets/pipeline/results/average-variance-error-per-gap-temperature.png" alt="Average variance error per gap on the KNMI Temperature target"/>
+  <figcaption><i>Average variance error per gap on the KNMI Temperature target</i></figcaption>
+</figure>
+
+The variance error is an indicator of how well the trend of the original dataset
+was followed in the imputed data.
+
+> RNN models were trained to minimize the prediction error (using the MSE loss
+function), however they also performed well in most cases at predicting the trend.
 
 [Back to the table of contents](#table-of-contents)
 
