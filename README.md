@@ -166,11 +166,31 @@ energy time series data?*
 
 ## Subject #2: Predictive analysis
 
-### Selecting a Model
+### Selecting a model
 
-### Configuring a Model
+I started off the project with the simplest imputation strategy possible, in
+order to quickly have a base to compare other methods with. When searching for
+widely used imputation methods, [I stumbled upon an article](https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779)
+which compares a few methods. The simplest ones were imputation using constant
+values (zero, mean, median) and interpolation. However using a constant value
+didn't seem interesting, so chose [2nd order spline interpolation](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/pipeline/imputers/interpolate.ipynb).
+
+Later in the project, I joined Jesús to try a machine learning method. Baldiri
+wanted us to include at least one machine learning method in the research paper,
+and according to [several papers](https://www.nature.com/articles/s41598-018-24271-9),
+Recurrent Neural Networks seemed to be the state-of-the-art for imputing
+multivariate time series with missing values.
+
+### Configuring a model
+
+?
 
 ### Training a model
+
+Prevent {over,under}fitting:
+- early stopping
+- feature selection
+- HP optimization
 
 ### Evaluating a model
 
@@ -210,7 +230,7 @@ energy time series data?*
 | ---------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | 04-10-2021 | Created presentation support, presented slides 7-8, 10-13, answered questions | [internal presentation week 6](assets/presentations/internal-presentation-week6.pdf)   |
 | 08-10-2021 | Created presentation support, presented slides 9-12, answered questions       | [external presentation week 6](assets/presentations/external-presentation-week6.pdf)   |
-| 10-12-2021 | Created presentation support, presented slide 6, answered questions           | [internal presentation week 14](assets/presentations/external-presentation-week14.pdf) |
+| 10-12-2021 | Created presentation support, presented slide 6, answered questions           | [external presentation week 14](assets/presentations/external-presentation-week14.pdf) |
 
 ### Writing paper
 
