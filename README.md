@@ -8,7 +8,6 @@
 
 ## Table of contents
 
-- [Introduction](#introduction)
 - [Datacamp certificates](#datacamp-certificates)
 - [Reflection on my own contribution to the project](#reflection-on-my-own-contribution-to-the-project)
 - [Reflection on my own learning objectives](#reflection-on-my-own-learning-objectives)
@@ -40,12 +39,6 @@
 - [Feedback](#feedback)
   - [Feedback from others](#feedback-from-others)
   - [Feedback for others](#feedback-for-others)
-
-## Introduction
-
-
-
-[Back to the table of contents](#table-of-contents)
 
 ## Datacamp certificates
 
@@ -341,9 +334,18 @@ function), however they also performed well in most cases at predicting the tren
 
 ### Writing paper
 
-RNN part  
-reviews + comments  
-help generating data and graphs  
+Juliën was mainly responsible for writing the paper, but he asked each one of
+us to write the part concerning what we worked on during the project.  
+So I wrote [the part about RNN](writings/research-paper-rnn.md), and asked for
+Jesús' and Juliën's feedback which were useful to shorten some paragraphs and
+better rephrase sentences.
+
+I also gave feedback on the whole paper and took part in many meetings to help
+finishing the paper, by helping to draw conclusions from results, or by providing
+tables and graphs.  
+Some of them were [correlation matrices, correlation values](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/pipeline/corr.ipynb)
+and [kurtosis and skewness comparison between datasets](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/pipeline/houses-comparison.ipynb)
+to support conclusions drawn in the paper.
 
 [Back to the table of contents](#table-of-contents)
 
