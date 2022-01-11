@@ -1,7 +1,7 @@
 # Portfolio
 
-**Firstname**: Adrien  
-**Lastname**: Lucbert  
+**First name**: Adrien  
+**Last name**: Lucbert  
 **Student number**: 21132356  
 **Academic year**: 2021-2022  
 **Project group**: IMPutation    
@@ -49,7 +49,7 @@
 
 ## Datacamp certificates
 
-You can find herebelow each DataCamp assignments and the corresponding
+You can find here below each DataCamp assignments and the corresponding
 certificate obtained after completion.
 
 | Course                                              | Certificate                                                                                         |
@@ -170,7 +170,17 @@ certificate obtained after completion.
 
 ### Presentations 
 
+| Date       | Implication                                                                   | Presentation                                                                           |
+| ---------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 04-10-2021 | Created presentation support, presented slides 7-8, 10-13, answered questions | [internal presentation week 6](assets/presentations/internal-presentation-week6.pdf)   |
+| 08-10-2021 | Created presentation support, presented slides 9-12, answered questions       | [external presentation week 6](assets/presentations/external-presentation-week6.pdf)   |
+| 10-12-2021 | Created presentation support, presented slide 6, answered questions           | [internal presentation week 14](assets/presentations/external-presentation-week14.pdf) |
+
 ### Writing paper
+
+RNN part  
+reviews + comments  
+help generating data and graphs  
 
 [Back to the table of contents](#table-of-contents)
 
