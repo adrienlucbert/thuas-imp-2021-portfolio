@@ -36,6 +36,7 @@
 - [Subject #5: Communication](#subject-5-communication)
   - [Presentations ](#presentations)
   - [Writing paper](#writing-paper)
+  - [Learning Lab](#learning-lab)
 - [Feedback](#feedback)
   - [Feedback from others](#feedback-from-others)
   - [Feedback for others](#feedback-for-others)
@@ -331,6 +332,19 @@ function), however they also performed well in most cases at predicting the tren
 | 04-10-2021 | Created presentation support, presented slides 7-8, 10-13, answered questions | [internal presentation week 6](assets/presentations/internal-presentation-week6.pdf)   |
 | 08-10-2021 | Created presentation support, presented slides 9-12, answered questions       | [external presentation week 6](assets/presentations/external-presentation-week6.pdf)   |
 | 10-12-2021 | Created presentation support, presented slide 6, answered questions           | [external presentation week 14](assets/presentations/external-presentation-week14.pdf) |
+
+### Learning Lab
+
+During the minor, we were asked to give a Learning Lab, which is a 20-minutes
+class about a data-sciences-related subject not covered in the lectures.  
+At first, Albert and Michael planned to give the Learning Lab on hot deck.
+However, it was a default choice as we didn't have any other idea, and they were
+not much motivated to do it. Until I started working with a genetic algorithm to
+optimize our models hyper-parameters, and thought that would make a great subject.
+
+I then wrote [this notebook](https://github.com/thuas-imp-2021/Learning-Lab/blob/main/genetic-algorithm.ipynb)
+as a basic genetic algorithm to support [the presentation](https://github.com/thuas-imp-2021/Learning-Lab/blob/main/presentation.pdf)
+that I prepared and gave together with Michael.
 
 ### Writing paper
 
