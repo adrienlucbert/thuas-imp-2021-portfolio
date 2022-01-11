@@ -120,6 +120,42 @@ certificate obtained after completion.
 
 ### Task definition
 
+The IMP project aims to provide guidelines for choosing imputation methods for
+Building Management System (BMS) time series data. Indeed, sensors often fail to
+either collect or send data, which results in gaps in datasets, that can have an
+impact on whatever use is made of this data.
+
+The project owner was the research group Energy in Transition from THUAS, and Mr.
+Baldiri Salcedo Rahola from this research group accompanied us through the whole
+project. The research group works in collaboration with Factory Zero, a company
+which, among other things, produces and monitors energy-neutral houses in the
+Netherlands. Factory Zero provided us with the data of around 120 houses over
+the year 2019.
+
+In previous work done by the research group and Factory Zero, the method chosen
+to impute missing data proved to have an impact on the quality of their results.
+Depending on the type of data and the gaps sizes, some methods performed better
+than others at predicting trends or exact values, depending on the end-use.
+For instance, to analyse a household water consumption, imputing showers at
+some point in the day would suffice, even if they are not imputing at the right
+time, whereas to accurately predict power usage at a specific point in time,
+imputing values accurately would be important.
+
+Considering all these parameters, providing guidelines for each situation would
+then make it easier for the research group and Factory Zero to choose the
+appropriate imputation method. This led us to the following research questions:
+
+**Main question:**
+
+*Which imputation techniques should be applied for data imputation in building
+energy time series data?*
+
+**Sub questions:**
+
+1. *What imputation methods are known for imputing time series data?*
+2. *Which imputation techniques are best suited for what gap sizes?*
+3. *What imputation techniques are best suited for which types of data?*
+
 ### Evaluation
 
 ### Conclusions
