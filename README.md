@@ -5,6 +5,13 @@
 **Student number**: 21132356  
 **Academic year**: 2021-2022  
 **Project group**: IMPutation    
+**Group members**:
+- Albert Corson (21084858)
+- Juliën van der Niet (18069681)
+- Michael Weij (18095593)
+- Ramon van der Elst (16077466)
+- Jesús Martínez De Juan (20150261)
+- Adrien Lucbert (21132356)
 
 ## Table of contents
 
@@ -37,9 +44,6 @@
   - [Presentations ](#presentations)
   - [Writing paper](#writing-paper)
   - [Learning Lab](#learning-lab)
-- [Feedback](#feedback)
-  - [Feedback from others](#feedback-from-others)
-  - [Feedback for others](#feedback-for-others)
 
 ## Datacamp certificates
 
@@ -196,10 +200,10 @@ architecture.
 
 When training our first models, we faced overfitting after some epochs.
 
-<figure style="max-width:600px;text-align:center;margin:.8em auto">
-  <img src="assets/RNN/validation-curve-poor-features.png" alt="Validation curve with poor features"/>
-  <figcaption><i>Validation curve that shows overfitting</i></figcaption>
-</figure>
+<div align="center">
+  <img width=600 src="assets/RNN/validation-curve-poor-features.png" alt="Validation curve with poor features"/>
+  <p align="center"><i>Validation curve that shows overfitting</i></p>
+</div>
 
 > Note that at epoch 120, we reset the model to the state where it's validation
 loss is the lowest, before continuing the training a bit further with a smaller
@@ -214,18 +218,18 @@ flow temperature using only the flow temperature and timestamp as features.
 showing the correlation between each field of Factory Zero data to help us
 choose the most correlated columns.
 
-<figure style="max-width:600px;text-align:center;margin:.8em auto">
-  <img src="assets/RNN/correlation-matrix.png" alt="Correlation matrix of Factory Zero sensors data"/>
-  <figcaption><i>Correlation matrix of the Factory Zero sensors data</i></figcaption>
-</figure>
+<div align="center">
+  <img width=600 src="assets/RNN/correlation-matrix.png" alt="Correlation matrix of Factory Zero sensors data"/>
+  <p><i>Correlation matrix of the Factory Zero sensors data</i></p>
+</div>
 
 After adding the two most correlated columns (`alklimaHeatPump return_temp` and
 `energyHeatpump power`), we obtained much better results.
 
-<figure style="max-width:600px;text-align:center;margin:.8em auto">
-  <img src="assets/RNN/validation-curve-better-features.png" alt="Validation curve with better features"/>
-  <figcaption><i>Validation curve that no longer overfits, thanks to better feature selection</i></figcaption>
-</figure>
+<div align="center">
+  <img width=600 src="assets/RNN/validation-curve-better-features.png" alt="Validation curve with better features"/>
+  <p><i>Validation curve that no longer overfits, thanks to better feature selection</i></p>
+</div>
 
 these results were satisfactory, but we wanted to improve them further, by
 tuning the model's hyper-parameters. To do that, I used a technique I learnt
@@ -281,15 +285,15 @@ After that, I used scripts written by Albert and Juliën to compare RNN results
 to other methods, plotting a specific gap, or calculating the variance error of
 imputations using different methods.
 
-<figure style="text-align:center;margin:.8em auto">
+<div align="center">
   <img src="assets/pipeline/results/method-comparison-temperature-gap-3.png" alt="Method comparison on one gap of the KNMI Temperature target"/>
-  <figcaption><i>Method comparison on one gap of the KNMI Temperature target</i></figcaption>
-</figure>
+  <p><i>Method comparison on one gap of the KNMI Temperature target</i></p>
+</div>
 
-<figure style="max-width:600px;text-align:center;margin:.8em auto">
-  <img src="assets/pipeline/results/average-variance-error-per-gap-temperature.png" alt="Average variance error per gap on the KNMI Temperature target"/>
-  <figcaption><i>Average variance error per gap on the KNMI Temperature target</i></figcaption>
-</figure>
+<div align="center">
+  <img width=600 src="assets/pipeline/results/average-variance-error-per-gap-temperature.png" alt="Average variance error per gap on the KNMI Temperature target"/>
+  <p><i>Average variance error per gap on the KNMI Temperature target</i></p>
+</div>
 
 The variance error is an indicator of how well the trend of the original dataset
 was followed in the imputed data.
@@ -360,13 +364,5 @@ tables and graphs.
 Some of them were [correlation matrices, correlation values](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/pipeline/corr.ipynb)
 and [kurtosis and skewness comparison between datasets](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/pipeline/houses-comparison.ipynb)
 to support conclusions drawn in the paper.
-
-[Back to the table of contents](#table-of-contents)
-
-## Feedback
-
-### Feedback from others
-
-### Feedback for others
 
 [Back to the table of contents](#table-of-contents)
