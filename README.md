@@ -6,6 +6,7 @@
 **Academic year**: 2021-2022  
 **Project group**: IMPutation    
 **Group members**:
+
 - Albert Corson (21084858)
 - Juliën van der Niet (18069681)
 - Michael Weij (18095593)
@@ -17,6 +18,8 @@
 
 - [Datacamp certificates](#datacamp-certificates)
 - [Reflection on my own contribution to the project](#reflection-on-my-own-contribution-to-the-project)
+  - [Creating an imputation methods evaluation pipeline](#creating-an-imputation-methods-evaluation-pipeline)
+  - [Implementing a Recurrent Neural Network for imputing time series data](#implementing-a-recurrent-neural-network-for-imputing-time-series-data)
 - [Reflection on my own learning objectives](#reflection-on-my-own-learning-objectives)
 - [Reflection on the group project as a whole](#reflection-on-the-group-project-as-a-whole)
 - [Subject #1: Research project](#subject-1-research-project)
@@ -79,6 +82,88 @@ school. Therefore, I worked mostly on technical aspects of the project, that
 involved writing code, either directly for the project, writing imputation 
 methods and visualizations for instance, or indirectly, by writing tools to make
 everyone's work easier.
+
+In this part, I would like to discuss the two main parts I worked on during this
+project: creating a consistent way to run and evaluate different imputation
+methods, and implementing a recurrent neural network to impute time series data.
+
+### Creating an imputation methods evaluation pipeline
+
+**Situation:** The goal of the Imputation project was to provide guidelines for
+choosing imputation methods depending on the data to impute and the end use of
+this data. To do this, we had to select several imputation methods and compare
+them in a consistent way.
+
+**Task:** To compare imputation methods, we had to select a complete dataset,
+create gaps in it, impute the gaps created using different imputation methods,
+evaluate imputation results and compare those results.
+
+**Action:** To ensure that all imputation methods were evaluated in a consistent
+way, with no way of unintentionally "cheating", by creating easier-to-impute gaps
+for example, Albert and I decided to create what we called a [pipeline](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/main/pipeline.ipynb).
+It would be an all-in-one tool for:
+
+- loading and preparing data
+- selecting the targets and features to feed to the different imputation methods
+- creating gaps of different sizes
+- running imputations
+- evaluating the imputation results
+- saving the results
+
+As at the time we wanted to create this pipeline, Albert was busy on some other
+tasks, I made the first version and took some architecture decisions. I wanted
+every part to be as abstracted as possible, especially the imputation part, so
+that we would not risk any bias or "cheating" in the methods evaluation.  
+
+To achieve that, I defined a uniform imputation function interface:
+
+<div align="center">
+  <img src="assets/pipeline/imputer-interface.png" alt="Imputer function interface"/>
+</div>
+
+Each imputation method would have minimal interactions with the rest of the
+pipeline, only receiving a dataframe with gaps and returning the same dataframe,
+with imputed values.
+
+Another goal I had was to make the pipeline easy to use with minimal changes to
+the code. For that, I created a complete user interface for each step of the
+pipeline.
+
+<div align="center">
+  <img width=600 src="assets/pipeline/ui.png" alt="Example of a UI element"/>
+  <p align="center"><i>Example of a UI element: data loader and feature/targets picker</i></p>
+</div>
+
+On the other hand, I knew some code I wrote for the pipeline would be useful
+for other scripts we would write, so I wrote it with a focus on readability
+and ease of use.  
+One example of that is the [`DataFrameLoader`](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/main/helpers/DataFrameLoader.ipynb)
+class, which simplifies data loading from different sources, feature and targets
+selection, while caching data for loading times efficiency.
+
+Overall, most of the code was [typed using python's typing module](https://docs.python.org/3/library/typing.html)
+to make it self-explanatory when possible, and commented otherwise.
+
+**Result:** The unique imputation function interface limited the imputation
+methods scope and minimized the risk. We especially saw that around the end of
+the project, when I was experimenting with Recurrent Neural Networks out of the
+pipeline, and got biased results that I later discovered were due to wrong gaps
+creation.
+
+Also, the fact that the code was quite readable and well split made it possible
+for Albert to later help me on improving the pipeline and adding features.
+
+In the end, the pipeline succeeded in providing a simple way to test methods and
+give non-biased comparisons.
+
+**Reflection:** However I feel like I spent too much time on writing the first
+version of the pipeline, especially to create the user interface instead of
+letting people modify the code to fit their needs. It proved useful, but maybe
+not worth the time I spent on it, that could have been used elsewhere.  
+However the pipeline proved to be crucial by the end of the project, as it sped
+up by a lot results visualization and methods evaluation and comparison.
+
+### Implementing a Recurrent Neural Network for imputing time series data
 
 **Situation:** 
 
@@ -271,7 +356,7 @@ After adding the two most correlated columns (`alklimaHeatPump return_temp` and
   <p><i>Validation curve that no longer overfits, thanks to better feature selection</i></p>
 </div>
 
-these results were satisfactory, but we wanted to improve them further, by
+These results were satisfactory, but we wanted to improve them further, by
 tuning the model's hyper-parameters. To do that, I used a technique I learnt
 during an internship last summer: hyper-parameters optimization using a genetic
 algorithm.  
