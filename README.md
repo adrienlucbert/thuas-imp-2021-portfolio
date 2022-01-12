@@ -20,6 +20,7 @@
 - [Reflection on my own contribution to the project](#reflection-on-my-own-contribution-to-the-project)
   - [Creating an imputation methods evaluation pipeline](#creating-an-imputation-methods-evaluation-pipeline)
   - [Implementing a Recurrent Neural Network for imputing time series data](#implementing-a-recurrent-neural-network-for-imputing-time-series-data)
+  - [Conclusion on my own contribution to the project](#conclusion-on-my-own-contribution-to-the-project)
 - [Reflection on my own learning objectives](#reflection-on-my-own-learning-objectives)
 - [Reflection on the group project as a whole](#reflection-on-the-group-project-as-a-whole)
 - [Subject #1: Research project](#subject-1-research-project)
@@ -215,6 +216,14 @@ the end of the project. I am very disappointed that I did not achieve this in
 time, however I learned a lot from this mistake and in the time spent on trying
 to implement this architecture.
 
+### Conclusion on my own contribution to the project
+
+After all, I very much enjoyed this minor and the project, but felt overworked,
+especially in the last two months, partly by my fault, as I could have divided
+my tasks more efficiently and undertook some of them alone. This, in addition
+to the different motivations and technical backgrounds in the group often led
+to an uneven workload between group members.
+
 [Back to the table of contents](#table-of-contents)
 
 ## Reflection on my own learning objectives
@@ -259,23 +268,80 @@ clear to me. I now have a good intuition on how to deal with a data science
 problem.
 
 **Reflection:** Even though I got involved in pretty much every aspect of the
-project, I somewhat regret that the Imputation project was quite specific on
-imputation methods. For instance, I would have liked to practice more
-classification models or some machine learning techniques.
+project and learnt a lot, I somewhat regret that the Imputation project was
+quite specific on imputation methods. For instance, I would have liked to
+practice more classification models or some machine learning techniques.
 
 [Back to the table of contents](#table-of-contents)
 
 ## Reflection on the group project as a whole
 
-**Situation:**
+**Situation:** Our group was composed of 6 students from various nationalities
+and educational backgrounds. Some of us, including me, had studied software
+engineering, some had already dealt with data sciences, whereas others were not
+quite familiar with programming and had to improve their programming skills.
 
-**Task:**
+For all of us, this was our first time in an English-speaking class. Also, due
+to the current health context, we had to alternate between all together at the
+university or only some of us, or even all remotely.
 
-**Action:**
+**Task:** In order to carry out the project, we needed to work together
+efficiently, divide the work, track everyone's progress and help each other
+when necessary.
 
-**Result:**
+**Action:** From the start of the project, we set up a SCRUM methodology using
+a Jira board. The goal was to divide the tasks, assign people to them, and keep
+track of the group progress. We worked with sprints of two weeks, meaning that we
+defined tasks that were feasible within two weeks, and at the end of each sprint
+we would review the work done, create new tasks and see how to improve our
+workflow.
 
-**Reflection:**
+Moreover, we planned stand-up meetings to work as a group, as well as weekly
+meetings with our project owner and each teacher individually.
+
+As for the work, we stored our literature research and writing on a shared
+OneDrive space, prepared most of our presentations together on [Canva](https://www.canva.com/),
+conducted code experiments on the CPU and GPU servers provided by the school and
+kept it all backed up and versioned on a [GitHub repository](https://github.com/Albert-Corson/imp-thuas/)
+created by Albert.
+
+**Result:** As English was not the mother tongue for any of us, at times it
+induced misunderstandings, whether on what was expected from the teachers or
+from other group members, or when communicating ideas and personal opinions on
+the work done.
+
+Meeting with teachers helped a lot to give advice, propose solutions to what
+we were stuck on, either on the code or in the writings, and warned us about
+possible mistakes we would have made otherwise. They have made themselves very
+available even for answering questions in one-to-one meetings with members of
+the group.
+
+Meetings with Baldiri also helped, as he was very willing to help and motivating,
+and never hesitated to clear misunderstandings out.
+
+Concerning the group work organization, we quickly ended up not using Jira as
+much as we could have. Some tasks were delayed, lasted more than expected, were
+not up to date.
+
+Finally, collaboration on the technical part was sometimes made uneasy, mainly
+due to the difficulty to split large tasks.
+
+**Reflection:** Overall we had a pleasant group dynamic, helped each other when
+needed, and carried out the project together well.
+
+However by the end of the project, the workload felt uneven, and some of us
+worked unreasonably late, but nevertheless, it didn't create any internal
+conflict, and we kept a healthy collaboration atmosphere, which was crucial to
+finishing the project properly.
+
+Distributing the workload more evenly throughout the duration of the minor
+probably would have avoided this situation.
+
+That being said, apart from the deception of not being able to include the
+encoder-decoder RNN, I am pretty proud of what we did as a group, and of the
+paper we delivered. I believe we answered the research question properly, with
+well conducted work, considering that we were almost all completely new to this
+domain at the beginning of the minor.
 
 [Back to the table of contents](#table-of-contents)
 
