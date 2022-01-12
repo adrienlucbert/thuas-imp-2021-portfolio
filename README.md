@@ -165,15 +165,55 @@ up by a lot results visualization and methods evaluation and comparison.
 
 ### Implementing a Recurrent Neural Network for imputing time series data
 
-**Situation:** 
+> This part will not go into technical details as it will be further discussed
+in the [predictive analysis](#subject-2-predictive-analysis) part. Instead,
+it will relate how I experienced this task.
 
-**Task:**
+**Situation:** In the beginning of November, as already quite a lot of
+imputation methods had been developed and evaluated, we still missed a machine
+learning solution to match Baldiri's expectations and to complete our research.
 
-**Action:**
+It was mainly Jesús' task, but he seemed to be struggling on this, and I had
+just finished working on the pipeline, so I was available to help him.
 
-**Result:**
+After Jesús had tried a few machine learning methods such as Convolutional
+Neural Networks and found out they did not fit our problem, we decided to focus
+on Recurrent Neural Networks. I will explain [later](#selecting-a-model) what
+led us to choosing this algorithm.
 
-**Reflection:**
+**Task:** Our task was then to train a Recurrent Neural Network on our data,
+evaluate its performance and compare them to those of other imputation methods.
+
+**Action:** This was my first experience with neural networks in Python. I
+first practiced on lectures examples, to understand how RNNs work and to what
+extent techniques such as data preparation, normalization, feature selection and
+hyper-parameters optimization could have an impact on the model's results.
+
+After that, Jesús and I conducted researches and experiments to select a model.
+Once we did, we made it fit our datasets, trained it and I optimized its
+hyper-parameters using a genetic algorithm.
+
+Although the model was then able to predict one value given a sequence of values
+as input, we needed to make it impute multi-step gaps. Moreover, to simplify
+evaluating and comparing it to other methods, it needed to fit to the pipeline.  
+For that, I turned it into an [imputer function compatible with the pipeline](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/main/imputers/RNN.ipynb).
+It would be provided with a model and a dataset with gaps, and walk forward
+through the dataset, predicting one value at a time.
+
+**Result:** With that, we were able to evaluate the model and compare a machine
+learning method to other methods. It overall performed pretty well, as long as
+it was provided with decent correlators.
+
+**Reflection:** The main limitation of our model was the fact that it only
+predicted one value at a time, given the X values before it. For imputing
+large gaps, it would mean that at some point, predictions would be solely based
+on predicted values, which would add a bias to the prediction.
+
+One solution to that problem, proposed by Jeroen, was to use an encoder-decoder
+architecture. I undertook this task but unfortunately ran out of time before
+the end of the project. I am very disappointed that I did not achieve this in
+time, however I learned a lot from this mistake and in the time spent on trying
+to implement this architecture.
 
 [Back to the table of contents](#table-of-contents)
 
