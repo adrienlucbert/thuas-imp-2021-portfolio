@@ -74,43 +74,83 @@ certificate obtained after completion.
 
 ## Reflection on my own contribution to the project
 
-*Situation:*
+I come from a very technical background, from an applied software engineering
+school. Therefore, I worked mostly on technical aspects of the project, that
+involved writing code, either directly for the project, writing imputation 
+methods and visualizations for instance, or indirectly, by writing tools to make
+everyone's work easier.
 
-*Task:*
+**Situation:** 
 
-*Action:*
+**Task:**
 
-*Result:*
+**Action:**
 
-*Reflection:*
+**Result:**
+
+**Reflection:**
 
 [Back to the table of contents](#table-of-contents)
 
 ## Reflection on my own learning objectives
 
-*Situation:*
+**Situation:** I am a 4th year student at Epitech, a IT expert school in France.
+The curriculum offers the opportunity to spend the 4th year abroad, in one of
+more than a hundred partner universities from all over the world.
 
-*Task:*
+My school helped me develop solid technical foundations in many languages and
+domains, but I only scratched the surface of artificial intelligence, even
+though it made me very curious for years. Indeed, I read a lot about it, but
+rarely had the opportunity to practice, either through personal projects or for
+school.
 
-*Action:*
+Last summer, I did a 4-months internship in a data sciences company, working
+with data scientists, but my work was to develop efficient tools using C++ to
+help them, I did not dive that much into actual data sciences.
 
-*Result:*
+Finally, my home school graduation project involves data sciences. Learning
+about it will definitely help me and my group to reach our project goals.
 
-*Reflection:*
+**Task:** This minor was the perfect opportunity to get a good grasp of what data
+sciences really were in practice. I don't intend to turn this knowledge into a
+professional career, however it may be very useful at times to help me solve
+software engineering problems.  
+
+**Action:** I have always been way more interested in practice than in theory.
+When working on a project, I would rather go headlong into code and experiments
+than to do the writing. For that, I was lucky that Ramon and Juliën were up to
+do the writing. It allowed me to experiment a lot with what I learned during
+lectures and in papers.
+
+Throughout the whole project, I tried to undertake a wide variety of subjects,
+such as data manipulation, cleansing, visualization, classification, prediction,
+model validation, model optimization, drawing up conclusion from data, ...
+
+**Result:** In the past years, I had read quite a lot about data sciences and
+machine learning, but everything I learned seemed untied and unclear.  
+Thanks to this minor's resources (lectures and classes on DataCamp) and my
+practice, I feel like I have connected the dots, and everything appears more
+clear to me. I now have a good intuition on how to deal with a data science
+problem.
+
+**Reflection:** Even though I got involved in pretty much every aspect of the
+project, I somewhat regret that the Imputation project was quite specific on
+imputation methods. For instance, I would have liked to practice more
+classification models or some machine learning techniques.
 
 [Back to the table of contents](#table-of-contents)
 
 ## Reflection on the group project as a whole
 
-*Situation:*
+**Situation:**
 
-*Task:*
+**Task:**
 
-*Action:*
+**Action:**
 
-*Result:*
+**Result:**
 
-*Reflection:*
+**Reflection:**
 
 [Back to the table of contents](#table-of-contents)
 
@@ -239,7 +279,7 @@ I used a genetic algorithm very much similar to [this one](https://github.com/th
 which generated random set of hyper-parameters and evaluated them using
 [this script](sources/GA/rnn-fzero.py). The evaluation fitness was the max
 `r2_score` obtained while training with the given hyper-parameters. This way,
-I run the genetic algorithm for 40 generations and 21500 indivuals, to improve
+I run the genetic algorithm for 40 generations and 21500 individuals, to improve
 our `r2_score` from 0.85 to 0.963 with the following parameters:
 
 | Parameter     | Description                                                               | Bounds     | Optimized value |
@@ -296,7 +336,8 @@ imputations using different methods.
 </div>
 
 The variance error is an indicator of how well the trend of the original dataset
-was followed in the imputed data.
+was followed in the imputed data, the lowest the better. Here, for imputing
+temperature, RNN visibly performs really well at predicting the trend.
 
 > RNN models were trained to minimize the prediction error (using the MSE loss
 function), however they also performed well in most cases at predicting the trend.
@@ -340,7 +381,7 @@ function), however they also performed well in most cases at predicting the tren
 ### Learning Lab
 
 During the minor, we were asked to give a Learning Lab, which is a 20-minutes
-class about a data-sciences-related subject not covered in the lectures.  
+class about a data sciences-related subject not covered in the lectures.  
 At first, Albert and Michael planned to give the Learning Lab on hot deck.
 However, it was a default choice as we didn't have any other idea, and they were
 not much motivated to do it. Until I started working with a genetic algorithm to
