@@ -576,7 +576,7 @@ adding timestamp or timedelta (difference between each observation timestamp and
 the previous observation timestamp) to the features had on the model's performance.
 
 To do this, I trained models on each target using [this script](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/main/rnn-trainer.ipynb),
-adding the timetamp alone, the timedelta alone, both, or none. The results are
+adding the timestamp alone, the timedelta alone, both, or none. The results are
 presented in the table below. As a matter of fact, using none resulted in an
 overall slight improvement.
 
@@ -623,6 +623,45 @@ function), however they also performed well in most cases at predicting the tren
 ## Subject #3: Domain knowledge
 
 ### Introduction of the subject field
+
+Building Management Systems generate large amounts of data over time by
+gathering measurements from various sensors spread all over a building's
+equipments. Examples of these sensors can be the temperature of a room or the
+energy or water consumption of the household. These data can then be analyzed
+and used to make predictions and assumptions useful for tasks such as better
+managing the building energy consumption and production, or preventing
+equipment breakdowns.
+
+However, due to sensors malfunctions, data transfer or storage errors, it
+happens quite often that data goes missing. Missing data in time-series make
+it impossible for models to train or use the data. For this reason, missing data
+must be imputed.
+
+Some of the data collected by these sensors can be hard to impute, such as power
+usage or co2 levels, as they can vary a lot in a short time span as a result of
+many different factors, measurable or not. Also, due to the way they work
+internally, some imputation methods can perform better at predicting certain
+data types: nominal values (operational mode of the thermostat), interval
+(thermostat temperature), ratio (power usage). For that reason, selecting the
+right method to impute a given sensor data can be an uncertain and
+time-consuming process.
+
+Over the past years, there have been a lot of research about specific known
+imputation methods, or new models propositions, tested on specific BMS sensors
+data. The focus of our research was not to propose a new method, but rather to
+give an overview of what exists and provide guidelines to choose from those
+methods depending on the data to impute and the size of the gaps of missing
+data.
+
+Also, depending on the end-use of the data, it may be more profitable to predict
+a correct trend over minimizing the prediction error. To this day, in most if
+not all researches in that domain, the most used evaluation metric is RMSE (Root
+Mean Squared Error), which measures the prediction error of a model. Even though
+we used this metric, we also looked at the difference between the variance of
+the original dataset (without gaps), and the variance of the dataset after
+imputations of manually created gaps. Adding that insight to our research gives
+the reader the possibility to choose an imputation method accordingly to his
+objectives.
 
 ### Literature research
 
