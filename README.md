@@ -665,6 +665,47 @@ objectives.
 
 ### Literature research
 
+As the project started, we needed to read some existing literature on the
+subject field. Each member of our group selected resources that seemed
+interesting to the study.
+
+I personally selected these sources:
+
+- [R-miss-tastic: A resource website on missing values - Methods and references for managing missing data](https://rmisstastic.netlify.app/bibliography/):
+A whole website dedicated to data imputation. It gathers many references on the
+different aspects of the subject. It sums up the hard stuff and is very easily
+understandable. 
+- [Max Kuhn and Kjell Johnson (2019), Feature Engineering and Selection: A Practical Approach for Predictive Models. Chapter 8: Handling Missing Data](https://bookdown.org/max/FES/handling-missing-data.html):
+A chapter is dedicated to handling missing data, it does not only discuss data
+imputation, but other methods as well. It gives a global understanding of the
+subject. 
+- [C.M. van Kampen, Missing Data Imputation Based On Probabilistic Data](https://essay.utwente.nl/79142/1/Missing_data_imputation_based_on_probabilistic_data.pdf):
+An essay aiming to compare different imputation methods. The interesting part I
+think is about data correlation. It analyzes relations between data fields, to
+do more accurate imputations. 
+- [E Afrifa-Yamoah,U. A. Mueller,S. M. Taylor,A. J. Fisher (2020), Missing data imputation of high-resolution temporal climate time series data](https://rmets.onlinelibrary.wiley.com/doi/full/10.1002/met.1873):
+This one also compares multiple imputation methods for imputing missing weather
+data, with several parameters (temperature, humidity, wind speed, ...). It shows
+results as a comparison between the actual dataset and the imputed dataset. 
+- [Will Badr (2019), 6 Different Ways to Compensate for Missing Values In a Dataset](https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779):
+This one compares 6 data imputation methods, giving pros and cons for each, it
+gives a quick overview of how we could tackle our problem, but does not go into
+much details. 
+
+Later, when working on Recurrent Neural Network, I made deeper research on that
+subject and found those sources:
+
+- [Niklas Donges (2021), A Guide to RNN: Understanding Recurrent Neural Networks and LSTM Networks](https://builtin.com/data-science/recurrent-neural-networks-and-lstm):
+A comprehensive introduction to Recurrent Neural Networks: how they work, their
+limitations and solutions to them.
+- [Zhengping Che, Sanjay Purushotham, Kyunghyun Cho, David Sontag, Yan Liu (2018), Recurrent Neural Networks for Multivariate Time Series with Missing Values](https://www.nature.com/articles/s41598-018-24271-9.pdf):
+GRU-D model proposition based on Gated Recurrent Units (GRU).
+- [Wei Cao, Dong Wang, Jian Li, Hao Zhou, Yitan Li, Lei Li (2018), BRITS: Bidirectional Recurrent Imputation for Time Series](https://proceedings.neurips.cc/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf):
+Model proposition based on bi-directional RNN to perform bi-directional
+uncorrelated and correlated recurrent imputation.
+- [Jason Brownlee (2018), Multi-Step LSTM Time Series Forecasting Models for Power Usage](https://machinelearningmastery.com/how-to-develop-lstm-models-for-multi-step-time-series-forecasting-of-household-power-consumption/):
+Guide to build a Recurrent Neural Network to forecast power usage.
+
 ### Explanation of Terminology, jargon and definitions
 
 [Back to the table of contents](#table-of-contents)
