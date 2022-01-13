@@ -62,9 +62,9 @@ sequence.
 
 ## Resources
 
-[https://www.nature.com/articles/s41598-018-24271-9.pdf](https://www.nature.com/articles/s41598-018-24271-9.pdf) 
-[https://www.sciencedirect.com/science/article/pii/S0378778819333717](https://www.sciencedirect.com/science/article/pii/S0378778819333717)
-[https://proceedings.neurips.cc/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf](https://proceedings.neurips.cc/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf)
-[https://machinelearningmastery.com/how-to-develop-lstm-models-for-multi-step-time-series-forecasting-of-household-power-consumption/](https://machinelearningmastery.com/how-to-develop-lstm-models-for-multi-step-time-series-forecasting-of-household-power-consumption/)
-[http://faculty.marshall.usc.edu/gareth-james/Research/bv.pdf](http://faculty.marshall.usc.edu/gareth-james/Research/bv.pdf)
-[https://builtin.com/data-science/recurrent-neural-networks-and-lstm](https://builtin.com/data-science/recurrent-neural-networks-and-lstm)
+[https://www.nature.com/articles/s41598-018-24271-9.pdf](https://www.nature.com/articles/s41598-018-24271-9.pdf)   
+[https://www.sciencedirect.com/science/article/pii/S0378778819333717](https://www.sciencedirect.com/science/article/pii/S0378778819333717)  
+[https://proceedings.neurips.cc/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf](https://proceedings.neurips.cc/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf)  
+[https://machinelearningmastery.com/how-to-develop-lstm-models-for-multi-step-time-series-forecasting-of-household-power-consumption/](https://machinelearningmastery.com/how-to-develop-lstm-models-for-multi-step-time-series-forecasting-of-household-power-consumption/)  
+[http://faculty.marshall.usc.edu/gareth-james/Research/bv.pdf](http://faculty.marshall.usc.edu/gareth-james/Research/bv.pdf)  
+[https://builtin.com/data-science/recurrent-neural-networks-and-lstm](https://builtin.com/data-science/recurrent-neural-networks-and-lstm)  
