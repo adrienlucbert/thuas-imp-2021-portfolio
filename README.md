@@ -387,6 +387,29 @@ energy time series data?*
 
 ### Evaluation
 
+For the future of this research, the machine learning model should be improved
+to be able to draw realistic conclusions about it. Indeed, the current
+architecture theoretically induces bias in its predictions when predicting
+multi-step gaps. As stated before, the encoder-decoder architecture seems very
+promising and appropriate, it should be a point of interest. This would also
+make it possible to train the model to predict a correct trend rather than
+trying to minimize the prediction error.
+
+Also, I believe that it should be able to make profit of the data following the
+gap to impute the gap itself, as well as using the data before as our models
+already do. I attempted to do that with bi-directional RNN, but got stuck when
+it came to predicting multi-step gaps, as the data right after one value of the
+gap was not also missing. This is a clear advantage of imputation over
+prediction, but so far our models apply the same method as for predicting
+upcoming data. This, combined with better using correlated features, as for now,
+only RNN uses correlated data for its predictions.
+
+Finally, our research intentionally focused on comparing imputation methods
+using statistics to evaluate the quality of the imputation itself. This was the
+goal defined by our project owner. However, it would be interesting to evaluate
+how different imputation strategies impact results obtained from the use of
+imputed data, in different scenarios, as forecasting.
+
 ### Conclusions
 
 ### Planning 
