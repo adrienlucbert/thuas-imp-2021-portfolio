@@ -458,6 +458,24 @@ table:
 
 ### Planning 
 
+At the start of the minor, we were advised by our lecturers to use the SCRUM
+method. All the members of the group were somewhat familiar with agile or even
+the SCRUM method, and had used them in previous projects. So we organized our
+work and split our tasks in sprints of two weeks on a Jira board.
+
+<div align="center">
+  <img width=600 src="assets/jira/backlog.png" alt="A part of the backlog for our project"/>
+  <p align="center"><i>A part of the backlog for our project</i></p>
+</div>
+
+Moreover, we conducted weekly meetings with each teachers individually as well
+as our project owner, in order to keep them updated on our progress, collect
+feedback and get answers to our questions.
+
+Internally, we communicated via a WhatsApp group or via Teams calls, and met
+at the university to work together at least once a week, but it became more
+frequent by the end of the project as the deadline approached.
+
 [Back to the table of contents](#table-of-contents)
 
 ## Subject #2: Predictive analysis
