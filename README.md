@@ -4,7 +4,7 @@
 **Last name**: Lucbert  
 **Student number**: 21132356  
 **Academic year**: 2021-2022  
-**Project group**: IMPutation    
+**Project group**: IMPutation  
 **Group members**:
 
 - Albert Corson (21084858)
@@ -13,6 +13,14 @@
 - Ramon van der Elst (16077466)
 - Jesús Martínez De Juan (20150261)
 - Adrien Lucbert (21132356)
+
+**Project owner**: Mr. Baldiri Salcedo Rahola  
+Research group Energy in Transition (THUAS)  
+**Lecturers**:
+
+- Jeroen Vuurens
+- Tony Andrioli
+- Ruud Vermeij
 
 ## Table of contents
 
