@@ -793,17 +793,34 @@ loading multiple features in the same dataset for models using correlation.
 
 ### Data cleansing
 
-Cleansed the data in a good and sufficient way
+KNMI data was of great quality: time deltas were very consistent (exactly 1h
+each), and no data was missing.
 
-Preliminary data selection and cleansing work was done by Albert.
-No further data cleansing needed, as we wanted our datasets to be as raw as
-possible to test uniformly different imputation methods on them.
-No outliers removal, no duplicates, no categorical data, no missing values
+On the other hand, FactoryZero datasets had inconsistent time deltas and a few
+gaps. Albert wrote a script to sort the datasets by "completeness", and
+created a scoreboard of the datasets with the smallest amount of missing data.
+It turned out that house 54 very almost complete, except for 2 or 3 10-minutes
+gaps. Considering the size of the dataset, this was negligible. For most of the
+project, we used this house to train and validate our models.
+
+As we wanted a streamlined imputation and evaluation pipeline, we wanted to
+keep our data as raw as possible, letting each individual imputation method
+perform the data cleaning and preparation if necessary. For that reason, on the
+pipeline scope, we did not perform outliers removal or any further data
+cleaning. Also, as we were dealing with time-series data only, we did not have
+duplicates to remove.
 
 ### Data preparation
 
 Prepared the data in an appropriate way, transforming data, removing outliers,
 filling in missing values, ...
+
+According to the previous data exploration, we did not have any categorical
+data to transform.
+
+Also, once again, as we wanted our datasets as raw as possible before passing
+them through each imputation method, we did not 
+
 For RNN: data cleansing
 
 ### Data explanation
