@@ -88,7 +88,7 @@ certificate obtained after completion.
 
 I come from a very technical background, from an applied software engineering
 school. Therefore, I worked mostly on technical aspects of the project, that
-involved writing code, either directly for the project, writing imputation 
+involved writing code, either directly for the project, by writing imputation 
 methods and visualizations for instance, or indirectly, by writing tools to make
 everyone's work easier.
 
@@ -131,7 +131,7 @@ To achieve that, I defined a uniform imputation function interface:
 </div>
 
 Each imputation method would have minimal interactions with the rest of the
-pipeline, only receiving a dataframe with gaps and returning the same dataframe,
+pipeline, only receiving a dataset with gaps and returning the same dataset,
 with imputed values.
 
 Another goal I had was to make the pipeline easy to use with minimal changes to
@@ -160,9 +160,10 @@ pipeline, and got biased results that I later discovered were due to wrong gaps
 creation.
 
 Also, the fact that the code was quite readable and well split made it possible
-for Albert to later help me on improving the pipeline and adding features.
+for Albert to later help me on improving the pipeline and adding functionalities
+to it.
 
-In the end, the pipeline succeeded in providing a simple way to test methods and
+In the end, the pipeline succeeded at providing a simple way to test methods and
 give non-biased comparisons.
 
 **Reflection:** However I feel like I spent too much time on writing the first
@@ -710,9 +711,29 @@ Guide to build a Recurrent Neural Network to forecast power usage.
 
 In the table below, I try to explain the technical terms used in this document.
 
-| Term               | Explanation                                             |
-| ------------------ | ------------------------------------------------------- |
-| Data science       | Using various tools to examine large data sets and extract valuable information. |
+| Term                     | Abbreviation | Explanation                                             |
+| ------------------------ | ------------ | ------------------------------------------------------- |
+| Data science             |              | Using various tools to examine large data sets and extract valuable information. |
+| Time-series              |              | A series of data obtained at successive times. |
+| Imputation               |              | Operation of replacing missing values in a dataset. |
+| Machine Learning         | ML           | Field of study that uses algorithms able to learn without explicit instructions. |
+| Model                    |              | Mathematical system that uses input data to predict or classify values. |
+| Loss function            |              | Mathematical function used to determine the error between a predicted value and the expected value. |
+| Overfit                  |              | When a model fits too closely to the training data and therefore doesn't generalize well to unseen data. |
+| Underfit                 |              | When a model doesn't fit the training data well. |
+| Hyper-parameters         |              | Value defined before training a machine learning model, that is used to control the learning process. |
+| Features                 |              | Input data fed to a model. |
+| Target                   |              | Value(s) resulting from a model. |
+| Genetic algorithm        | GA           | Algorithm that mimics Darwin's theory of evolution, in order to repeatedly select and improve values based on an evaluation procedure. |
+| Neural Network           | NN           | Machine Learning algorithm capable of recognizing patterns in data through processes that mimic the human brain. |
+| Recurrent Neural Network | RNN          | Neural Network architecture that considers a sequence of values to predict a value or a sequence of values. |
+| Forward-filling          |              | Imputation technique that consists of filling missing values with the previous valid value. |
+| Agile / SCRUM            |              | Iterative approach to project management. |
+| NaN values               |              | Not a Number values, the meaning can differ but in data science, it mostly means that data is missing. |
+| Timestamps               |              | Date format widely used in computer science. |
+| Time delta               |              | Difference between two dates, namely the difference between the observation times of values in a time-series. |
+| Polling time             |              | Theoretical time between each observation in an evenly-spaced time-series. |
+| Data scaling             |              | Transformation of data to make it fit within a certain range. This can help machine learning models learn faster. |
 
 [Back to the table of contents](#table-of-contents)
 
@@ -852,7 +873,7 @@ previously shown correlation matrices, and data loading, as well as merging
 columns was handled by the [DataFrameLoader helper](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/main/helpers/DataFrameLoader.ipynb)
 I wrote. It renamed columns to avoid name conflicts between sensors, and merges
 feature columns onto the target column based on their indices, performing a left
-join on the indices, so that the size of the resulting dataframe wouldn't change
+join on the indices, so that the size of the resulting dataset wouldn't change
 as we added features with mismatching indices.
 
 ### Data explanation
