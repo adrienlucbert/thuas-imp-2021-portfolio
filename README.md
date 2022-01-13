@@ -708,7 +708,7 @@ Guide to build a Recurrent Neural Network to forecast power usage.
 
 ### Explanation of Terminology, jargon and definitions
 
-In the table below, I try to explain the terms used in this document.
+In the table below, I try to explain the technical terms used in this document.
 
 | Term               | Explanation                                             |
 | ------------------ | ------------------------------------------------------- |
@@ -720,13 +720,104 @@ In the table below, I try to explain the terms used in this document.
 
 ### Data exploration
 
+In the first week of the project, I visualized several KNMI and FactoryZero data
+fields to understand how it was shaped.
+
+Using matplotlib combined with Jupyter notebooks, I was able to plot entire
+datasets (one field at a time to keep it readable), and zoom in as much as
+necessary to get a deeper understanding of the data. I shared those
+visualizations with my group and our project owner, who then explained a bit
+more how these data were collected and what every field was really about
+(the sensor, its location in the building, the measured data and its unit).
+
+<div align="center">
+  <img src="assets/pipeline/visualizations/temperature-over-time.png" alt="KNMI temperature plotted over time"/>
+  <p align="center"><i>KNMI Temperature plotted over time</i></p>
+</div>
+
+To make sure that the datasets we had were fit for training models (balanced
+mostly), [I then plotted the distribution of their fields](sources/pipeline/dataset-distribution.ipynb).
+
+<div align="center">
+  <img src="assets/pipeline/visualizations/distribution-temperature.png" alt="KNMI Temperature dataset distribution"/>
+  <p align="center"><i>KNMI Temperature dataset distribution</i></p>
+</div>
+
+As well as [the distribution of the time deltas](sources/pipeline/dataset-gaps-distribution.ipynb), to see if there was missing
+data (gaps in real data was not present as rows with NaN values, but the rows
+were simply missing. The way to detect gaps was to analyze the time difference
+between each observation).
+
+<div align="center">
+  <img src="assets/pipeline/visualizations/gaps-distribution-power.png" alt="Time deltas distribution on FactoryZero's alklimaHeatPump power (house 99)"/>
+  <p align="center"><i>Time deltas distribution on FactoryZero's alklimaHeatPump power (house 99)</i></p>
+</div>
+
+Some datasets had almost no gaps, whereas others had too many gaps to be easily
+used for training and validation purposes.
+
+After that, [I classified every field of the FactoryZero datasets](assets/f0-data-types.csv)
+to determine their scale (ordinal, nominal, interval or ratio). Juliën did the
+same on KNMI fields.
+
+<div align="center">
+  <img src="assets/columns-types.png" alt="Extract of the FactoryZero columns types classification document"/>
+  <p align="center"><i>Extract of the FactoryZero columns types classification document</i></p>
+</div>
+
+This helped us notice that there was no categorical value in the dataset, that
+would otherwise have needed transformations.
+
+Finally, as we planned to test some models that would use correlation between
+fields, I [made a heatmap](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/pipeline/corr.ipynb)
+highlighting the correlation between each field of our datasets.
+
+<div align="center">
+  <img src="assets/pipeline/visualizations/correlation-all-f0.png" alt="Correlation heatmap for all of FactoryZero dataset fields"/>
+  <p align="center"><i>Correlation heatmap for all of FactoryZero dataset fields</i></p>
+</div>
+
+This later allowed us to choose the most correlated fields for each target we
+wanted to impute.
+
+After this preliminary data exploration, we concluded that there was more than
+enough data for training and validation. Although KNMI data was clean and did
+not present missing data, FactoryZero datasets had a few gaps. Therefore, we
+needed to select the best(s) dataset(s) to work with.
+
+Moreover, the timestamps between the different sensors did not necessarily
+match. Most of the time it did, but it could happen that an observation was
+missing in one sensor data, while present in another's, sometimes even
+timestamps differed only by a few seconds. This needed to be considered when
+loading multiple features in the same dataset for models using correlation.
+
 ### Data cleansing
+
+Cleansed the data in a good and sufficient way
+
+Preliminary data selection and cleansing work was done by Albert.
+No further data cleansing needed, as we wanted our datasets to be as raw as
+possible to test uniformly different imputation methods on them.
+No outliers removal, no duplicates, no categorical data, no missing values
 
 ### Data preparation
 
+Prepared the data in an appropriate way, transforming data, removing outliers,
+filling in missing values, ...
+For RNN: data cleansing
+
 ### Data explanation
 
+Described the entire dataset
+
+- multiple sensors
+- mostly interval and ratio data
+- positive and negative correlations (ex: solar power / heat pump power)
+- 
+
 ### Data visualization
+
+Visualized the data in support of decisions made for learning the model
 
 [Back to the table of contents](#table-of-contents)
 
