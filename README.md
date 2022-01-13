@@ -812,16 +812,48 @@ duplicates to remove.
 
 ### Data preparation
 
-Prepared the data in an appropriate way, transforming data, removing outliers,
-filling in missing values, ...
-
 According to the previous data exploration, we did not have any categorical
 data to transform.
 
-Also, once again, as we wanted our datasets as raw as possible before passing
-them through each imputation method, we did not 
+However the main problem when loading multiple features from different sensors
+was indices (timestamp) mismatch. We chose to solve this by [the date parser I
+made](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/main/config/factory_zero.py)
+for FactoryZero datasets by rounding the timestamp to the nearest minute. This
+way, when timestamps differed by a few seconds, it would no longer appear.
 
-For RNN: data cleansing
+The only problem remaining about timestamp was when one sensor actually missed
+data at one point in time. This happened very rarely and was not a problem for
+most models as few would use correlated features, so we decided to leave it up
+to each model implementation.
+
+When implementing the Recurrent Neural Network, I faced the need for data
+preparation. Indeed, as the RNN worked with multiple, correlated features, it
+happened that NaN values appeared when data was missing from one feature. This
+made it impossible for the model to train or to impute data. On the training
+data, I simply removed rows containing NaN values to avoid training on fake data,
+but when it came to imputing a dataset, I chose to impute missing data in the
+feature columns (not the target as imputing NaN values in the target was the
+goal of the RNN) using forward-filling. As missing values were very rare, and
+were no longer than 10 minutes, this approximation would not have an important
+impact on the results.
+
+Finally, a rare case that was still important to consider was missing values in
+the first rows of the target column. Indeed, as the RNN requires a sequence of
+arbitrarily-fixed size N values to predict a value, if a value was missing in
+the first N rows of the dataset, it was impossible to impute using RNN. Once
+again, this happened rarely and was negligible, but in case it happened, I
+needed to solve this issue. To do that, I performed a linear interpolation on
+the first N rows of the dataset before starting its imputation using RNN.
+
+The code for the RNN, including data preparation is available [here](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/main/imputers/RNN.ipynb).
+
+During the whole project, feature selection was made manually according to the
+previously shown correlation matrices, and data loading, as well as merging
+columns was handled by the [DataFrameLoader helper](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/main/helpers/DataFrameLoader.ipynb)
+I wrote. It renamed columns to avoid name conflicts between sensors, and merges
+feature columns onto the target column based on their indices, performing a left
+join on the indices, so that the size of the resulting dataframe wouldn't change
+as we added features with mismatching indices.
 
 ### Data explanation
 
@@ -830,7 +862,6 @@ Described the entire dataset
 - multiple sensors
 - mostly interval and ratio data
 - positive and negative correlations (ex: solar power / heat pump power)
-- 
 
 ### Data visualization
 
