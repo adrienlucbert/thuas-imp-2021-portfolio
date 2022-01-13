@@ -412,6 +412,42 @@ imputed data, in different scenarios, as forecasting.
 
 ### Conclusions
 
+In order to answer the research question, we tried out a lot of different
+imputation methods. From the simplest forward-filling methods, statistics-based
+filling, hot deck, single or multi-linear regression, to machine learning
+solutions, we experimented with a wide variety of methods.
+
+As a result, we found out that each of these methods fulfil specific objectives:
+some are easier and faster to train or to run but offer sufficient results
+depending on the expectations, whereas some others perform better at predicting
+trends, while others predict more accurately the values, by minimizing their
+predictions error. Also, some may perform to a different extent depending on the
+size of the gaps they have to impute.
+
+Before drawing conclusions, we visualized the imputation using a script Albert
+wrote, which plotted a gap from each target and gap type, while outlining the
+imputation results of each method. This helped us understand how each method
+works, which led to further improvements of some methods before drawing the
+final conclusions. All visualizations can be found in [the notebook](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/pipeline/plot-comparison-data.ipynb),
+but here is an example:
+
+<div align="center">
+  <img width=600 src="assets/pipeline/results/method-comparison-flow_temp-gap-4.png" alt="Method comparison for alklimaHeatPump flow_temp column on gap type 4"/>
+  <p align="center"><i>Method comparison for alklimaHeatPump flow_temp column on gap type 4</i></p>
+</div>
+
+From the combination of these graphs and [quantitative methods comparisons](https://github.com/thuas-imp-2021/thuas-imp-2021/blob/pipeline/playground.ipynb)
+from another script made by Albert, we were able to answer the last two
+sub-questions (*Which imputation techniques are best suited for what gap sizes?*
+and *What imputation techniques are best suited for which types of data?*) in a
+table:
+
+| Data type | Gap type 1 | Gap type 2 | Gap type 3 | Gap type 4 | Gap type 5 | 
+| --------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| Nominal   | Hot-deck   | Hot-deck   | Hot-deck   | Hot-deck   | Hot-deck   |
+| Ratio     | Hot-deck   | Hot-deck   | Hot-deck   | Hot-deck   | Hot-deck   |
+| Interval  | RNN        | RNN        | RNN        | RNN        | RNN        |
+
 ### Planning 
 
 [Back to the table of contents](#table-of-contents)
