@@ -857,11 +857,23 @@ as we added features with mismatching indices.
 
 ### Data explanation
 
-Described the entire dataset
+Both KNMI and FactoryZero datasets solely contained time-series data, from
+various sensors, measuring different types of data, with different units.
 
-- multiple sensors
-- mostly interval and ratio data
-- positive and negative correlations (ex: solar power / heat pump power)
+We requested from KNMI weather data with a polling rate of 1 hour over 2 years
+from January 2018 to January 2020, from 20 weather stations in the Netherlands.
+Some stations did not record data that other stations did record, resulting in
+empty columns, but the recorded data did not present any missing value.
+
+FactoryZero provided us with anonymous data from 120 energy-positive houses
+that they manage. Each file contains the data of a house, with a polling rate
+of approximately 5 minutes, over 1 year from January 2019 to January 2020.
+Those data however contained gaps, in the form of missing rows rather than NaN
+values.
+
+Overall, most columns, both from KNMI and FactoryZero, were interval values
+(such as heat pump or indoor/output temperature) or ratio values (such as power
+usage or water consumption).
 
 ### Data visualization
 
