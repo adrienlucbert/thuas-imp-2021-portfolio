@@ -708,6 +708,12 @@ Guide to build a Recurrent Neural Network to forecast power usage.
 
 ### Explanation of Terminology, jargon and definitions
 
+In the table below, I try to explain the terms used in this document.
+
+| Term               | Explanation                                             |
+| ------------------ | ------------------------------------------------------- |
+| Data science       | Using various tools to examine large data sets and extract valuable information. |
+
 [Back to the table of contents](#table-of-contents)
 
 ## Subject #4: Data preprocessing
