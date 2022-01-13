@@ -877,7 +877,41 @@ usage or water consumption).
 
 ### Data visualization
 
-Visualized the data in support of decisions made for learning the model
+Throughout the project, I often needed to visualize the data or the results of
+what I was working on, whether it was data preparation or imputation.
+
+In the evaluation section of the pipeline, I managed to plot the imputation
+results for each gap type.
+
+<div align="center">
+  <img width=600 src="assets/pipeline/evaluation/imputation-results-rnn-flow_temp-gap-3.png" alt="Imputation results using RNN on alklimaHeatPump flow_temp on gap type 3"/>
+  <p align="center"><i>Imputation results using RNN on alklimaHeatPump flow_temp on gap type 3</i></p>
+</div>
+
+I wrote the first version of this plotting function, only featuring the
+imputation result, then Albert added the imputation error subplot.
+
+At some point in the implementation of the RNN model, this helped me diagnose
+the lack of data scaling.
+
+While training the RNN, plotting the model's predictions as well as the
+validation curves helped diagnose underfitting, mainly due to too few (or none)
+correlated features.
+
+<div align="center">
+  <img width=600 src="assets/pipeline/evaluation/rnn-co2-no-correlators.png" alt="Imputation results using RNN on co2 on gap type 3, with no correlators"/>
+  <p align="center"><i>Imputation results using RNN on co2 on gap type 3, with no correlators</i></p>
+</div>
+
+FactoryZero's co2 column had very poor correlators, so at first I did not feed
+any correlator to the model. However it performed really poorly. Adding the best
+correlator, even though it is very poorly correlated, improved quite a lot the
+results. They are still not great, but at least they follow the trend.
+
+<div align="center">
+  <img width=600 src="assets/pipeline/evaluation/rnn-co2-with-correlators.png" alt="Imputation results using RNN on co2 on gap type 3, with correlators"/>
+  <p align="center"><i>Imputation results using RNN on co2 on gap type 3, with poor correlators</i></p>
+</div>
 
 [Back to the table of contents](#table-of-contents)
 
